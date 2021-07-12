@@ -1,3 +1,8 @@
+## 1.0.2
+
+- Format files.
+- Minor changes to metadata.
+
 ## 1.0.1
 
 - Format files.
