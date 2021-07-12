@@ -1,6 +1,6 @@
 name: asx
 description: asx is a lightweight library for parsing asx documents from document string.
-version: 1.0.0
+version: 1.0.1
 homepage: https://github.com/Andromo-App-Maker/asx
 
 environment:
