@@ -1,3 +1,3 @@
-## 0.0.1
+## 1.0.0 - Initial release
 
-* TODO: Describe initial release.
+- Includes the ability to parse .asx documents from String.
