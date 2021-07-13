@@ -1,3 +1,7 @@
+## 1.0.3
+
+- Refactor pubspec.yaml file.
+
 ## 1.0.2
 
 - Format files.

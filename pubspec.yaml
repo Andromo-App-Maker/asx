@@ -11,7 +11,6 @@ dependencies:
 
   xml: ^5.1.2
   equatable: ^2.0.3
-  lints: ^1.0.1
 
   flutter:
     sdk: flutter
@@ -19,6 +18,7 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  lints: ^1.0.1
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
