@@ -1,6 +1,6 @@
 ## 1.0.4
 
-- flutter dependency remove.
+- Flutter dependency remove.
 
 ## 1.0.3
 
