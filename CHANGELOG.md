@@ -1,3 +1,7 @@
+## 1.0.4
+
+- flutter dependency remove.
+
 ## 1.0.3
 
 - Refactor pubspec.yaml file.
