@@ -1,3 +1,12 @@
+## 1.0.6
+
+- Format files.
+- Tests refactor.
+
+## 1.0.5
+
+- Support case insensitivity.
+
 ## 1.0.4
 
 - Flutter dependency remove.

@@ -22,9 +22,14 @@ class AsxDocument {
 
     final XmlDocument? document = XmlDocument.parse(documentString);
 
-    final entries = document?.findAllElements('ENTRY').toList();
+    List<XmlElement> entries =
+        document?.findAllElements('ENTRY').toList() ?? [];
 
-    if (entries != null) {
+    if (entries.isEmpty) {
+      entries = document?.findAllElements('entry').toList() ?? [];
+    }
+
+    if (entries.isNotEmpty) {
       for (XmlElement element in entries) {
         String? link;
         String? title;
@@ -43,29 +48,46 @@ class AsxDocument {
         EndMarker? endMarker;
 
         // Get Link.
-        final XmlElement? ref = element.getElement("REF");
+        XmlElement? ref = element.getElement("REF");
+
+        ref ??= element.getElement("ref");
+
         link = ref?.getAttributeNode("HREF")?.value;
 
+        link ??= ref?.getAttributeNode("href")?.value;
+
         // Get Title.
-        final XmlElement? titleElement = element.getElement("TITLE");
+        XmlElement? titleElement = element.getElement("TITLE");
+
+        titleElement ??= element.getElement("title");
+
         title = titleElement?.descendants
             .where((node) => node is XmlText && node.text.trim().isNotEmpty)
             .join('\n');
 
         // Get author.
-        final XmlElement? authorElement = element.getElement("AUTHOR");
+        XmlElement? authorElement = element.getElement("AUTHOR");
+
+        authorElement ??= element.getElement("author");
+
         author = authorElement?.descendants
             .where((node) => node is XmlText && node.text.trim().isNotEmpty)
             .join('\n');
 
         // Get abstract.
-        final XmlElement? abstractElement = element.getElement("ABSTRACT");
+        XmlElement? abstractElement = element.getElement("ABSTRACT");
+
+        abstractElement ??= element.getElement("abstract");
+
         abstract = abstractElement?.descendants
             .where((node) => node is XmlText && node.text.trim().isNotEmpty)
             .join('\n');
 
         // Get copyright.
-        final XmlElement? copyrightElement = element.getElement("COPYRIGHT");
+        XmlElement? copyrightElement = element.getElement("COPYRIGHT");
+
+        copyrightElement ??= element.getElement("copyright");
+
         copyright = copyrightElement?.descendants
             .where((node) => node is XmlText && node.text.trim().isNotEmpty)
             .join('\n');
@@ -74,32 +96,62 @@ class AsxDocument {
         banner = _getBanner(element);
 
         // Get baseURL.
-        final XmlElement? baseElement = element.getElement("BASE");
+        XmlElement? baseElement = element.getElement("BASE");
+
+        baseElement ??= element.getElement("base");
+
         baseURL = baseElement?.getAttributeNode("HREF")?.value;
 
+        baseURL ??= baseElement?.getAttributeNode("href")?.value;
+
         // Get duration.
-        final XmlElement? durationElement = element.getElement("DURATION");
+        XmlElement? durationElement = element.getElement("DURATION");
+
+        durationElement ??= element.getElement("duration");
+
         duration = durationElement?.getAttributeNode("VALUE")?.value;
 
+        duration ??= durationElement?.getAttributeNode("value")?.value;
+
         // Get previewDuration.
-        final XmlElement? previewDurationElement =
+        XmlElement? previewDurationElement =
             element.getElement("PREVIEWDURATION");
+
+        previewDurationElement ??= element.getElement("previewduration");
+
         previewDuration =
             previewDurationElement?.getAttributeNode("VALUE")?.value;
 
+        previewDuration ??=
+            previewDurationElement?.getAttributeNode("value")?.value;
+
         // Get startTime.
-        final XmlElement? startTimeElement = element.getElement("STARTTIME");
+        XmlElement? startTimeElement = element.getElement("STARTTIME");
+
+        startTimeElement ??= element.getElement("starttime");
+
         startTime = startTimeElement?.getAttributeNode("VALUE")?.value;
 
+        startTime ??= startTimeElement?.getAttributeNode("value")?.value;
+
         // Get endTime.
-        final XmlElement? endTimeElement = element.getElement("ENDTIME");
+        XmlElement? endTimeElement = element.getElement("ENDTIME");
+
+        endTimeElement ??= element.getElement("endtime");
+
         endTime = endTimeElement?.getAttributeNode("VALUE")?.value;
 
-        // Get params.
-        final List<XmlElement>? entryParams =
-            element.findAllElements('PARAM').toList();
+        endTime ??= endTimeElement?.getAttributeNode("value")?.value;
 
-        if (entryParams != null) {
+        // Get params.
+        List<XmlElement> entryParams =
+            element.findAllElements('PARAM').toList() ?? [];
+
+        if (entryParams.isEmpty) {
+          entryParams = element.findAllElements('param').toList() ?? [];
+        }
+
+        if (entryParams.isNotEmpty) {
           for (XmlElement paramElement in entryParams) {
             Param param = _getParam(paramElement);
 
@@ -108,8 +160,13 @@ class AsxDocument {
         }
 
         // Get moreInfo.
-        final XmlElement? moreInfoElement = element.getElement("MOREINFO");
+        XmlElement? moreInfoElement = element.getElement("MOREINFO");
+
+        moreInfoElement ??= element.getElement("moreinfo");
+
         moreInfo = moreInfoElement?.getAttributeNode("HREF")?.value;
+
+        moreInfo ??= moreInfoElement?.getAttributeNode("href")?.value;
 
         // Get startMarker.
         startMarker = _getStartMarker(element);
@@ -143,7 +200,9 @@ class AsxDocument {
   }
 
   static Banner _getBanner(XmlElement element) {
-    final XmlElement? bannerElement = element.getElement("BANNER");
+    XmlElement? bannerElement = element.getElement("BANNER");
+
+    bannerElement ??= element.getElement("banner");
 
     String? bannerLink;
     String? bannerAbstract;
@@ -151,15 +210,24 @@ class AsxDocument {
 
     bannerLink = bannerElement?.getAttributeNode("HREF")?.value;
 
-    final XmlElement? bannerAbstractElement =
-        bannerElement?.getElement("ABSTRACT");
+    bannerLink ??= bannerElement?.getAttributeNode("href")?.value;
+
+    XmlElement? bannerAbstractElement = bannerElement?.getElement("ABSTRACT");
+
+    bannerAbstractElement ??= bannerElement?.getElement("abstract");
+
     bannerAbstract = bannerAbstractElement?.descendants
         .where((node) => node is XmlText && node.text.trim().isNotEmpty)
         .join('\n');
 
-    final XmlElement? bannerMoreInfoElement =
-        bannerElement?.getElement("MOREINFO");
+    XmlElement? bannerMoreInfoElement = bannerElement?.getElement("MOREINFO");
+
+    bannerMoreInfoElement ??= bannerElement?.getElement("moreinfo");
+
     bannerMoreInfoLink = bannerMoreInfoElement?.getAttributeNode("HREF")?.value;
+
+    bannerMoreInfoLink ??=
+        bannerMoreInfoElement?.getAttributeNode("href")?.value;
 
     return Banner(
       url: bannerLink,
@@ -173,31 +241,50 @@ class AsxDocument {
     String? paramValue;
 
     paramName = element.getAttributeNode("NAME")?.value;
+
+    paramName ??= element.getAttributeNode("name")?.value;
+
     paramValue = element.getAttributeNode("VALUE")?.value;
+
+    paramValue ??= element.getAttributeNode("value")?.value;
 
     return Param(name: paramName, value: paramValue);
   }
 
   static StartMarker _getStartMarker(XmlElement element) {
-    final XmlElement? startMarkerElement = element.getElement("STARTMARKER");
+    XmlElement? startMarkerElement = element.getElement("STARTMARKER");
+
+    startMarkerElement ??= element.getElement("startmarker");
 
     String? startMarkerNumber;
     String? startMarkerName;
 
     startMarkerNumber = startMarkerElement?.getAttributeNode("NUMBER")?.value;
+
+    startMarkerNumber ??= startMarkerElement?.getAttributeNode("number")?.value;
+
     startMarkerName = startMarkerElement?.getAttributeNode("NAME")?.value;
+
+    startMarkerName ??= startMarkerElement?.getAttributeNode("name")?.value;
 
     return StartMarker(name: startMarkerName, number: startMarkerNumber);
   }
 
   static EndMarker _getEndMarker(XmlElement element) {
-    final XmlElement? endMarkerElement = element.getElement("ENDMARKER");
+    XmlElement? endMarkerElement = element.getElement("ENDMARKER");
+
+    endMarkerElement ??= element.getElement("endmarker");
 
     String? endMarkerNumber;
     String? endMarkerName;
 
     endMarkerNumber = endMarkerElement?.getAttributeNode("NUMBER")?.value;
+
+    endMarkerNumber ??= endMarkerElement?.getAttributeNode("number")?.value;
+
     endMarkerName = endMarkerElement?.getAttributeNode("NAME")?.value;
+
+    endMarkerName ??= endMarkerElement?.getAttributeNode("name")?.value;
 
     return EndMarker(name: endMarkerName, number: endMarkerNumber);
   }

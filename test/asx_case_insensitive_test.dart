@@ -2,38 +2,41 @@ import 'package:asx/asx.dart';
 import 'package:test/test.dart';
 
 void main() {
-
-  group('Parse asx file as fileString', () {
+  group('Parse asx case - insensitive file as fileString', () {
     final String fileString = """
-        <ASX Version="3">
-     <ABSTRACT>Powered by example.com</ABSTRACT>
-     <ENTRY>
-     <REF HREF = "http://example.mp3"/>
-     <ABSTRACT>Powered by example.com</ABSTRACT>
-     <TITLE> example | FM</TITLE>
-     <COPYRIGHT>(c) copyright </COPYRIGHT>
-     <DURATION VALUE="00:00:30" />
-     <AUTHOR>author</AUTHOR>
-     <PREVIEWDURATION VALUE="0:30.0" />
-     <PARAM NAME="Location" VALUE="North America" />
-     <PARAM NAME="Release Date" VALUE="March 1998" />
-     <BANNER HREF="http://example.com">
-         <ABSTRACT>Click here to go to our website.</ABSTRACT>
-         <MOREINFO HREF="https://sample.example.com" />
-     </BANNER>
-     <BASE HREF="https://sample.example.com" />
-     <STARTTIME VALUE="0:10.0" />
-     <MOREINFO HREF="https://sample.example.com" />
-     <STARTMARKER NUMBER="14" />
-     <ENDMARKER NUMBER="17" NAME="Marker_StopHere" />
-     </ENTRY>
-     </ASX>
+        <asx Version="3">
+     <abstract>Powered by example.com</abstract>
+     <entry>
+     <ref href = "http://example.mp3"/>
+     <abstract>Powered by example.com</abstract>
+     <title> example | FM</title>
+     <copyright>(c) copyright </copyright>
+     <duration VALUE="00:00:30" />
+     <author>author</author>
+     <previewduration VALUE="0:30.0" />
+     <param name="Location" value="North America" />
+     <param name="Release Date" value="March 1998" />
+     <banner href="http://example.com">
+         <abstract>Click here to go to our website.</abstract>
+         <moreinfo HREF="https://sample.example.com" />
+     </banner>
+     <base HREF="https://sample.example.com" />
+     <starttime VALUE="0:10.0" />
+     <moreinfo HREF="https://sample.example.com" />
+     <startmarker NUMBER="14" />
+     <endmarker NUMBER="17" NAME="Marker_StopHere" />
+     </entry>
+     </asx>
   """;
 
     final asxParser = AsxDocument.parse(fileString);
 
     test('Entries not null', () {
-      expect(asxParser.entries, isNotNull, reason: "Entries are null",);
+      expect(
+        asxParser.entries,
+        isNotNull,
+        reason: "Entries are null",
+      );
     });
 
     test('Parses one entry', () {
@@ -164,5 +167,4 @@ void main() {
       );
     });
   });
-
 }

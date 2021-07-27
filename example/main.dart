@@ -22,7 +22,7 @@ void main() async {
   final String fileString = """
         <ASX Version="3">
      <ABSTRACT>Powered by example.com</ABSTRACT>
-     <ENTRY>
+     <entry>
      <REF HREF = "http://example.mp3"/>
      <ABSTRACT>Powered by example.com</ABSTRACT>
      <TITLE> example | FM</TITLE>
@@ -41,7 +41,7 @@ void main() async {
      <MOREINFO HREF="https://sample.example.com" />
      <STARTMARKER NUMBER="14" />
      <ENDMARKER NUMBER="17" NAME="Marker_StopHere" />
-     </ENTRY>
+     </entry>
      </ASX>
   """;
 
