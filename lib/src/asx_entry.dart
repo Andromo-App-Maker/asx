@@ -6,7 +6,7 @@ import 'asx_entry_properties/start_marker.dart';
 /// ASX entry that specifies media file.
 class AsxEntry {
   /// URL to a metafile.
-  final String? link;
+  final String link;
 
   /// A text string specifying the title for entry element.
   final String? title;
@@ -65,7 +65,7 @@ class AsxEntry {
   /// Creates ASX entry that specifies media file.
   AsxEntry({
     this.title,
-    this.link,
+    required this.link,
     this.author,
     this.endMarker,
     this.startMarker,

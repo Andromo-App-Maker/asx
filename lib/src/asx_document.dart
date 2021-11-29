@@ -56,6 +56,10 @@ class AsxDocument {
 
         link ??= ref?.getAttributeNode("href")?.value;
 
+        if (link == null) {
+          throw Exception("link can not be parsed");
+        }
+
         // Get Title.
         XmlElement? titleElement = element.getElement("TITLE");
 
