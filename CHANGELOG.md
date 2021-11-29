@@ -1,9 +1,12 @@
+## 1.0.8
+
+- Link element make required and not null.
+- Packages update.
+
 ## 1.0.7
 
-- Link make required and not null.
-- Params add in tests.
 - Code refactor.
-- Packages update.
+- Null-aware operation in Params elements remove.
 
 ## 1.0.6
 
