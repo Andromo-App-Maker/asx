@@ -1,5 +1,11 @@
 ## 1.0.6
 
+- Link make required and not null.
+- Params add in tests.
+- Code refactor.
+
+## 1.0.6
+
 - Format files.
 - Tests refactor.
 
