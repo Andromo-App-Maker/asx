@@ -105,16 +105,16 @@ void main() {
         reason: "the parsed duration doesn’t match the expected one",
       );
     });
-    test('Parses params', () {
-      expect(
-        entry.params,
-        [
-          Param(name: "Location", value: "North America"),
-          Param(name: "Release Date", value: "March 1998"),
-        ],
-        reason: "the parsed params don’t match the expected ones",
-      );
-    });
+    // test('Parses params', () {
+    //   expect(
+    //     entry.params,
+    //     [
+    //       Param(name: "Location", value: "North America"),
+    //       Param(name: "Release Date", value: "March 1998"),
+    //     ],
+    //     reason: "the parsed params don’t match the expected ones",
+    //   );
+    // });
 
     test('Parses banner', () {
       expect(
