@@ -3,6 +3,7 @@
 - Link make required and not null.
 - Params add in tests.
 - Code refactor.
+- Packages update.
 
 ## 1.0.6
 
