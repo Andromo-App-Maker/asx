@@ -149,10 +149,10 @@ class AsxDocument {
 
         // Get params.
         List<XmlElement> entryParams =
-            element.findAllElements('PARAM').toList() ?? [];
+            element.findAllElements('PARAM').toList();
 
         if (entryParams.isEmpty) {
-          entryParams = element.findAllElements('param').toList() ?? [];
+          entryParams = element.findAllElements('param').toList();
         }
 
         if (entryParams.isNotEmpty) {
