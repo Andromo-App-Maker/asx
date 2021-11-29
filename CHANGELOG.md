@@ -1,4 +1,4 @@
-## 1.0.6
+## 1.0.7
 
 - Link make required and not null.
 - Params add in tests.
