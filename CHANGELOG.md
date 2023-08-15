@@ -1,3 +1,7 @@
+## 1.0.9
+
+- Update dependencies.
+
 ## 1.0.8
 
 - Link element make required and not null.
