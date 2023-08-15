@@ -1,6 +1,6 @@
 ## 1.0.9
 
-- Packages update
+- Update dependencies.
 
 ## 1.0.8
 
