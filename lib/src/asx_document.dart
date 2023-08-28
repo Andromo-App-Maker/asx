@@ -66,7 +66,7 @@ class AsxDocument {
         titleElement ??= element.getElement("title");
 
         title = titleElement?.descendants
-            .where((node) => node is XmlText && node.text.trim().isNotEmpty)
+            .where((node) => node is XmlText && node.value.trim().isNotEmpty)
             .join('\n');
 
         // Get author.
@@ -75,7 +75,7 @@ class AsxDocument {
         authorElement ??= element.getElement("author");
 
         author = authorElement?.descendants
-            .where((node) => node is XmlText && node.text.trim().isNotEmpty)
+            .where((node) => node is XmlText && node.value.trim().isNotEmpty)
             .join('\n');
 
         // Get abstract.
@@ -84,7 +84,7 @@ class AsxDocument {
         abstractElement ??= element.getElement("abstract");
 
         abstract = abstractElement?.descendants
-            .where((node) => node is XmlText && node.text.trim().isNotEmpty)
+            .where((node) => node is XmlText && node.value.trim().isNotEmpty)
             .join('\n');
 
         // Get copyright.
@@ -93,7 +93,7 @@ class AsxDocument {
         copyrightElement ??= element.getElement("copyright");
 
         copyright = copyrightElement?.descendants
-            .where((node) => node is XmlText && node.text.trim().isNotEmpty)
+            .where((node) => node is XmlText && node.value.trim().isNotEmpty)
             .join('\n');
 
         // Get banner.
@@ -221,7 +221,7 @@ class AsxDocument {
     bannerAbstractElement ??= bannerElement?.getElement("abstract");
 
     bannerAbstract = bannerAbstractElement?.descendants
-        .where((node) => node is XmlText && node.text.trim().isNotEmpty)
+        .where((node) => node is XmlText && node.value.trim().isNotEmpty)
         .join('\n');
 
     XmlElement? bannerMoreInfoElement = bannerElement?.getElement("MOREINFO");
