@@ -1,6 +1,6 @@
 ## 1.0.9
 
-- Update dependencies.
+- Update minimum `xml` version to `6.3.0`.
 
 ## 1.0.8
 
